@@ -12,7 +12,13 @@
 // -verifica se sono nell'arrey
 
 const mexNumeri = document.getElementById("numeri");
+const mexNumUtente = document.getElementById ("numeri-utente");
+const mexNumUguali= document.getElementById ("numeri-uguali");
+const mexNumDiversi = document.getElementById ("numeri-diversi");
 let arrayNum = [];
+let arrayNumUtente = [];
+let arrayNumUguali = [];
+let arrayNumDiversi = [];
 
 // creo array numeri random
 for (let i = 0; i < 5; i++) {
@@ -21,8 +27,37 @@ for (let i = 0; i < 5; i++) {
 
 // stampo i numeri
 console.log(arrayNum);
-mexNumeri.innerHTML = arrayNum ;
+mexNumeri.innerHTML = "Numeri da ricordare: " + arrayNum ;
 
+// prompt dopo 5 secondi
+setTimeout(function(){
+  mexNumeri.innerHTML = "" ;
+  for (let i = 0; i < 5; i++) {
+    
+    let numUtente = parseInt(prompt("scrivi un numero"));
+    console.log (numUtente);
+
+    arrayNumUtente.push(numUtente);
+
+    if (arrayNum.includes (numUtente)) {
+      arrayNumUguali.push(numUtente);
+
+    }else{
+      arrayNumDiversi.push(numUtente)
+    }
+    console.log("num utente",   arrayNumUtente);
+    console.log("num uguali", arrayNumUguali);
+    console.log("num diversi", arrayNumDiversi);
+  }
+
+  // stampo risultati
+
+  mexNumeri.innerHTML = "Numeri da ricordare: " + arrayNum ;
+  mexNumUtente.innerHTML = "I tuoi numeri: " + arrayNumUtente ;
+  mexNumUguali.innerHTML = "Questi numeri sono giusti: " + arrayNumUguali ;
+  mexNumDiversi.innerHTML = "Questi numeri sono sbagliati: " + arrayNumDiversi ;
+
+}, 5000);
 
 
 
